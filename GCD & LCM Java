@@ -1,0 +1,40 @@
+package learning;
+
+public class algorithms {
+
+    public static int gcd(int a, int b) {
+    /*
+        complexity: O(log min(a,b))
+        --- recursion, Euclid algorithm ---
+        calculates the greatest common divisor (gcd) of 2 numbers - a and b
+        ! a should be bigger than b (a > b) for better production !
+    
+        :param a: first (bigger) number
+        :param b: second(less) number
+        :return:  gcd
+    */
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+
+    public static int lcm(int a, int b) {
+    /*
+        --- recursion, Euclid algorithm ---
+        calculates the least common multiplier (lcm) of 2 numbers - a and b
+        ! a should be bigger than b (a > b) for better production !
+        :param a: first (bigger) number
+        :param b: second(less) number
+        :return:  lcm
+    */
+        return a / gcd(a, b) * b;
+    }
+
+
+    public static void main(String[] args) {
+            int a = 6;
+            int b = 0;
+            int G = gcd(a, b);
+            int L = lcm(a, b);
+            System.out.printf("gcd: %d    lcm: %d%n", G, L);
+        }
+    }

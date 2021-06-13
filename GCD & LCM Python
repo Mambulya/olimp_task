@@ -1,0 +1,41 @@
+from sys import stdin
+
+
+def find_gcd(a: int, b: int) -> int:
+    """
+    complexity: O(log min(a,b))
+    --- recursion, Euclid algorithm ---
+    calculates the greatest common divisor (gcd) of 2 numbers - a and b
+    ! a should be bigger than b (a > b) for better production !
+
+    :param a: first (bigger) number
+    :param b: second(less) number
+    :return:  gcd
+    """
+    if not a and not b:
+        return "∞"
+    while b != 0:
+        a %= b
+        a,b = b,a
+    return a
+
+
+def find_lcm(a,b):
+    """
+        --- recursion, Euclid algorithm ---
+        calculates the least common multiplier (lcm) of 2 numbers - a and b
+        ! a should be bigger than b (a > b) for better production !
+        :param a: first (bigger) number
+        :param b: second(less) number
+        :return:  lcm
+    """
+    try:
+        return a // find_gcd(a,b) * b
+    except (TypeError, ZeroDivisionError):
+        return None
+
+
+if __name__ == "__main__":
+    while 1:
+        n, k = map(int, stdin.readline().split())
+        print("gcd: {gcd}   lcm: {lcm}".format(gcd=find_gcd(n,k), lcm=find_lcm(n,k)))

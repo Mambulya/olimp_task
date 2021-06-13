@@ -1,0 +1,25 @@
+from sys import stdin
+
+
+def find_gcd(a: int, b: int) -> int:
+    """
+    complexity: O(log min(a,b))
+    --- recursion, Euclid algorithm ---
+    calculates the greatest common
+    ! a should be bigger than b (a > b) for better production !
+    divisor (gcd) of 2 numbers - a and b
+    :param a: first (bigger) number
+    :param b: second(less) number
+    :return:  gcd
+    """
+    while b != 0:
+        a %= b
+        a,b = b,a
+    return a
+
+print(find_gcd(6.6, 11))
+
+if __name__ == "__main__":
+    while 1:
+        n, k = map(int, stdin.readline().split())
+        print(find_gcd(n,k))
